@@ -1,48 +1,67 @@
+/* Căn giữa toàn bộ */
 body {
+  margin: 0;
   height: 100vh;
+  background: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+.container {
+  text-align: center;
+}
+
+/* SVG */
 svg {
+  width: 600px;
   overflow: visible;
 }
-svg path#line {
+
+/* Nhịp tim */
+#line {
   fill: none;
   stroke: #e00000;
   stroke-width: 2;
-  stroke-linecap: butt;
-  stroke-linejoin: round;
-  stroke-miterlimit: 4;
-  stroke-dasharray:none;
-  stroke-opacity: 1;
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
   animation: dash 4s linear infinite;
 }
-svg path#heart {
-  transform-origin: 50% 50%;
+
+/* Trái tim */
+#heart {
+  fill: #ff9999;
+  stroke: #ff9999;
+  transform-origin: center;
   animation: blink 4s linear infinite;
 }
 
+/* Vòng tròn tên */
+.name-circle {
+  margin-top: 25px;
+  width: 130px;
+  height: 130px;
+  border: 3px solid #e00000;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 30px;
+  font-weight: bold;
+  color: #e00000;
+  animation: nameBeat 4s infinite;
+}
+
+/* Animation */
 @keyframes dash {
-  0% {
-    stroke-dashoffset: 1;
-  }
-  80% {
-    stroke-dashoffset: 0;
-  }
-  100% {
-    stroke-dashoffset: 0;
-  }
+  0% { stroke-dashoffset: 1; }
+  80% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 0; }
 }
 
 @keyframes blink {
-  0% {
-    opacity: 0;
-    transform: scale(0);
-  }
-  60% {
+  0%, 60% {
     opacity: 0;
     transform: scale(0);
   }
@@ -50,20 +69,22 @@ svg path#heart {
     opacity: 1;
     transform: scale(1.2);
   }
-  75% {
-    opacity: 1;
-    transform: scale(1.0);
-  }
   80% {
-    opacity: 1;
-    transform: scale(1.2);
-  }
-  85% {
-    opacity: 1;
-    transform: scale(1.0);
+    transform: scale(1);
   }
   100% {
     opacity: 0;
-    transform: scale(1.0);
+  }
+}
+
+@keyframes nameBeat {
+  0%, 60% {
+    transform: scale(1);
+  }
+  70% {
+    transform: scale(1.15);
+  }
+  80% {
+    transform: scale(1);
   }
 }
